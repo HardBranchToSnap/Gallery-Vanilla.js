@@ -1,0 +1,505 @@
+body {  
+  font-family: 'Exo 2', sans-serif;
+        margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.you-like {
+  color: red;
+}
+.miniature {
+  cursor: zoom-in;
+}
+
+.miniature .miniature-like {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-image:url("../img/like.png"); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+   /*background-position: 0px 0px;   equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 90px; 
+    width: 100px;
+    /*padding-left: 16px;      make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+    display: none;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+.miniature:hover .miniature-like {
+    display: inline;
+}
+
+/* Всплывающее окно */
+
+.gallery-overlay {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0, 0, 0, 0.84);
+    text-align: center;
+}
+
+.gallery-overlay-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.gallery-overlay-preview {
+  display: inline-block;
+  margin: 30px 0;
+
+  background: #ffffff;
+}
+
+.gallery-overlay-image {
+    border: 1px solid #888;
+    max-width: 800px;
+    max-height: 700px;
+    cursor: pointer;
+}
+
+.gallery-overlay-controls {
+  font-size: 14px;
+  color: #000000;
+}
+
+.gallery-overlay-controls-comments,
+.gallery-overlay-controls-like {
+  padding: 0 20px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+.gallery-overlay-controls-comments {
+  margin-right: 150px;
+
+  text-align: left;
+}
+
+.gallery-overlay-controls-like {
+  float: right;
+  width: 150px;
+
+  text-align: right;
+}
+
+.comments_showmore{
+  height: 40px;
+  padding-top: 20px;
+  cursor: pointer;
+  background: #ffe75369;
+
+}
+.comments_showmore:hover{
+  background: black;
+  color: white;
+}
+
+.social__picture {
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+.social__text {
+  text-align: left;
+  padding-left: 45px;
+  max-width: 750px;
+  margin-bottom: 35px;
+}
+
+.photo__description {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+
+.miniature .dolike {
+  background-image:url("../img/liked.png");
+  -webkit-animation-name: spaceboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+.liked-nohover {
+   position: absolute;
+    top: 99%;
+    left: 99%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-image:url("../img/liked.png");
+    background-size: 30px auto;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    height: 90px; 
+    width: 100px;
+}
+
+.miniature:hover .liked-nohover {
+    display: none;
+}
+
+/* Фильтры */
+
+.filters {
+  z-index: 3;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  color: white;
+  text-align: center;
+}
+
+.filters-item {
+  padding: 0 16px;
+  font-size: 18px;
+  line-height: 30px;
+
+  cursor: pointer;
+}
+
+.filters-radio {
+  position: absolute;
+  right: -100px;
+  left: -100px;
+}
+
+.filters-radio:checked + .filters-item {
+  color: #000000;
+  text-decoration: none;
+
+  background: #ffffff;
+  border-radius: 1px;
+}
+
+.button-load {
+    background-color: white;
+    border: 3px solid black;
+    color: black;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.button-load:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* Форма */
+
+.upload-form {
+  position: fixed;
+  left: 50%;
+
+  width: 582px;
+  height: 569px;
+  margin: 5px 0 0 -294px;
+  padding: 0;
+  border: 0;
+}
+
+.upload-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+
+  width: 100%;
+  height: 100%;
+  padding: 60px 0;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  overflow: auto;
+}
+
+.upload-effect {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.upload-effect__container {
+  position: relative;
+}
+
+.upload-effect-preview {
+  background-image: url('../img/upload-default-image.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.upload-effect-label-chrome .upload-effect-preview,
+.effect-chrome {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.upload-effect-label-sepia .upload-effect-preview,
+.effect-sepia {
+  -webkit-filter: sepia(1);
+          filter: sepia(1);
+}
+
+.upload-effect-label-marvin .upload-effect-preview,
+.effect-marvin {
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+.upload-effect-label-phobos .upload-effect-preview,
+.effect-phobos {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+}
+
+.upload-effect-label-heat .upload-effect-preview,
+.effect-heat {
+  -webkit-filter: brightness(3);
+          filter: brightness(3);
+}
+
+.upload-input {
+  visibility: hidden;
+}
+
+.upload-image .upload-submit {
+  background-image: url("../img/upload-button.png");
+}
+
+.upload-file {
+  display: block;
+}
+
+.upload-image .upload-submit {
+  display: none;
+}
+
+.upload-input-hasvalue + .upload-file {
+  display: none;
+}
+
+.upload-input-hasvalue + .upload-file + .upload-submit {
+  display: block;
+}
+
+.upload-form-controls {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 0;
+
+  margin: 0;
+  padding: 10px;
+
+  border: 0;
+}
+
+.upload-form-cancel {
+  display: block;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  cursor: pointer;
+
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 10px;
+
+  border: 0;
+  border-radius: 2px;
+
+  background: rgba(255, 255, 255, 0.2) url("../img/icon-cross.png") center no-repeat;
+}
+
+.upload-form-cancel:active {
+  transform: translateY(1px);
+}
+
+.hashtags-bar {
+  width: 450px;
+  height: auto;
+  margin: 0 auto 30px;
+  margin-bottom: 20px;
+}
+
+.upload-form-hashtag {
+  float: left;
+  display: block;
+  color: white;
+  height: 20px;
+  padding: 3px;
+  margin-bottom: 5px;
+  cursor: pointer;
+
+  top: 0;
+  left: 100%;
+  margin-right: 5px;
+
+  border: 0;
+  border-radius: 2px;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Слайдер */
+.upload-effect-level {
+  width: 495px;
+  height: 33px;
+
+  box-sizing: border-box;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -60px;
+
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 33px;
+}
+
+.upload-effect-level-line {
+  height: 5px;
+
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(255, 231, 81, 0.4);
+}
+
+.upload-effect-level-pin {
+  width: 18px;
+  height: 18px;
+
+  position: absolute;
+  left: 20%;
+  top: 50%;
+
+  margin: -9px 0 0;
+
+  background: #ffe753;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  cursor: move;
+}
+
+.upload-effect-level-val {
+  width: 20%;
+  height: 100%;
+  max-width: 100%;
+
+  position: absolute;
+
+  background: #ffe753;
+}
+
+/* Эффекты */
+.upload-effect-controls {
+  position: relative;
+
+  width: 470px;
+  margin: 10px auto 30px;
+  padding: 0;
+
+  font-size: 12px;
+  line-height: 42px;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+
+  border: 0;
+}
+
+.effect-image-preview {
+  vertical-align: middle;
+}
+
+.upload-effect-controls input[type=radio] {
+  position: absolute;
+
+  visibility: hidden;
+}
+
+.upload-effect-label {
+  display: inline-block;
+  margin: 0 5px;
+
+  font: 14px "Open Sans Condensed";
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.upload-effect-label:hover,
+input[type=radio]:checked + .upload-effect-label {
+  color: #ffe753;
+}
+
+input[type=radio]:checked + .upload-effect-label .upload-effect-preview {
+  border-color: #ffe753;
+}

@@ -1,0 +1,369 @@
+/* Фильтры */
+
+.filters-radio {
+  position: absolute;
+  right: -100px;
+  left: -100px;
+}
+
+.filters-radio:checked + .filters-item {
+  color: #000000;
+  text-decoration: none;
+
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* Форма */
+
+.upload-form {
+  position: fixed;
+
+  padding: 0;
+
+  border: 0;
+}
+
+.upload-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+
+  width: 100%;
+  height: 100%;
+  padding: 60px 0;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  overflow: auto;
+}
+
+.upload-effect {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.upload-effect__container {
+  position: relative;
+}
+
+.upload-effect-preview {
+  background-image: url('../img/upload-default-image.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.upload-effect-label-chrome .upload-effect-preview,
+.effect-chrome {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.upload-effect-label-sepia .upload-effect-preview,
+.effect-sepia {
+  -webkit-filter: sepia(1);
+          filter: sepia(1);
+}
+
+.upload-effect-label-marvin .upload-effect-preview,
+.effect-marvin {
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+.upload-effect-label-phobos .upload-effect-preview,
+.effect-phobos {
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+}
+
+.upload-effect-label-heat .upload-effect-preview,
+.effect-heat {
+  -webkit-filter: brightness(3);
+          filter: brightness(3);
+}
+
+.upload-input {
+  visibility: hidden;
+}
+
+.upload-control {
+  position: absolute;
+  top: 193px;
+  left: 202px;
+
+  box-sizing: border-box;
+  width: 182px;
+  height: 182px;
+  margin: 0;
+  padding: 0;
+
+  background: url("../img/icon-photo.png") center no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-file {
+  display: block;
+}
+
+.upload-image .upload-submit {
+  display: none;
+}
+
+.upload-input-hasvalue + .upload-file {
+  display: none;
+}
+
+.upload-input-hasvalue + .upload-file + .upload-submit {
+  display: block;
+}
+
+.upload-form-controls {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 4;
+
+  margin: 0;
+  padding: 10px;
+
+  border: 0;
+}
+
+.upload-form-cancel {
+  display: block;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  cursor: pointer;
+
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 10px;
+
+  border: 0;
+  border-radius: 2px;
+
+  background: rgba(255, 255, 255, 0.2) url("../img/icon-cross.png") center no-repeat;
+}
+
+.upload-form-cancel:active {
+  transform: translateY(1px);
+}
+
+.hashtags-bar {
+  width: 450px;
+  height: auto;
+  margin: 0 auto 30px;
+  margin-bottom: 20px;
+}
+
+.upload-form-hashtag {
+  float: left;
+  display: block;
+  color: white;
+  height: 20px;
+  padding: 3px;
+  margin-bottom: 5px;
+  cursor: pointer;
+
+  top: 0;
+  left: 100%;
+  margin-right: 5px;
+
+  border: 0;
+  border-radius: 2px;
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Эффекты */
+.upload-effect-controls {
+  position: relative;
+
+  width: 470px;
+  margin: 10px auto 30px;
+  padding: 0;
+
+  font-size: 12px;
+  line-height: 42px;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+
+  border: 0;
+}
+
+.effect-image-preview {
+  vertical-align: middle;
+}
+
+.upload-effect-controls input[type=radio] {
+  position: absolute;
+
+  visibility: hidden;
+}
+
+.upload-effect-label {
+  display: inline-block;
+  margin: 0 5px;
+
+  font: 14px "Open Sans Condensed";
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.upload-effect-label:hover,
+input[type=radio]:checked + .upload-effect-label {
+  color: #ffe753;
+}
+
+input[type=radio]:checked + .upload-effect-label .upload-effect-preview {
+  border-color: #ffe753;
+}
+
+/* Превью */
+.upload-effect-preview {
+  display: block;
+  width: 70px;
+  height: 70px;
+
+  overflow: hidden;
+  background-size: 100% auto;
+  background-position: center;
+  border: solid 4px transparent;
+  border-radius: 5px;
+
+  margin-bottom: 5px;
+}
+
+/* Слайдер. Регулировка глубины фильтра */
+.upload-effect-level {
+  width: 495px;
+  height: 33px;
+
+  box-sizing: border-box;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -60px;
+
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 33px;
+}
+
+.upload-effect-level-line {
+  height: 5px;
+
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(255, 231, 81, 0.4);
+}
+
+.upload-effect-level-pin {
+  width: 18px;
+  height: 18px;
+
+  position: absolute;
+  left: 20%;
+  top: 50%;
+
+  margin: -9px 0 0;
+
+  background: #ffe753;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  cursor: move;
+}
+
+.upload-effect-level-val {
+  width: 20%;
+  height: 100%;
+  max-width: 100%;
+
+  position: absolute;
+
+  background: #ffe753;
+}
+
+/* Хэш-теги */
+.upload-form-hashtags {
+  width: 470px;
+
+  font: 18px "Open Sans";
+  color: #9a9a9a;
+
+  display: block;
+  margin: 0 auto 10px;
+  margin-top: 20px;
+  padding: 8px 10px;
+
+  border-radius: 5px;
+}
+
+.upload-form-hashtags:focus {
+  color: #000;
+}
+
+/* Описание */
+.upload-form-description {
+  width: 470px;
+  height: 4em;
+
+  font: 14px "Open Sans";
+  color: #9a9a9a;
+
+  display: block;
+  margin: 0 auto 30px;
+  padding: 20px 10px;
+
+  border-radius: 5px;
+}
+
+.upload-form-description:focus {
+  color: #000;
+}
+
+/* Кнопка отправки */
+.upload-form-submit {
+  padding: 0 20px;
+  margin-bottom: 30px;
+
+  font: 14px "Open Sans";
+  font-weight: 900;
+  color: #ffe753;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  height: 46px;
+  width: 127px;
+  text-align: center;
+
+  background: rgba(255, 231, 82, 0.2);
+  border: 0;
+  border-radius: 4px;
+}
+
+.upload-form-submit:active {
+  transform: translateY(1px);
+}
+
+.upload-form-submit:disabled,
+.upload-form-submit-disabled {
+  opacity: 0.3;
+}
